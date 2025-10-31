@@ -67,18 +67,18 @@
 <body>
     @include('layout.navbar')
     <header class="header hero-section bg-maneki text-white ">
-        <div class="container position-relative">
-            <div class="row align-items-center ">
-                <div class="col-lg-6">
-                    <h1 class="display-5 fw-bold text-maneki-orange">Bangun Masa Depanmu Dengan Melek Finansial</h1>
-                    <p class="lead mt-3">Jadikan impianmu nyata dengan perencanaan keuangan yang kuat. Maneki menyediakan alat, edukasi, dan komunitas yang siap mendukung perjalanan finansialmu, dari nol hingga ahli.</p>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZpbmFuY2lhbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600" alt="Ilustrasi Melek Finansial" class="img-fluid rounded-3">
-                </div>
+    <div class="container position-relative">
+        <div class="row align-items-center ">
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold text-maneki-orange">{{ $settings->hero_title }}</h1>
+                <p class="lead mt-3">{{ $settings->hero_subtitle }}</p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ Storage::url($settings->hero_image_url) }}" alt="Ilustrasi Melek Finansial" class="img-fluid rounded-3">
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <section class="section-padding text-center">
         <div class="container">
@@ -92,59 +92,41 @@
     </section>
 
     <section class="section-padding pt-0">
-        <div class="container">
-            <h2 class="text-center mb-5">Akses Cepat</h2>
-            <div class="row text-center">
-                <div class="col-lg-4 mb-4">
-                    <div class="card p-4 h-100 border-0 shadow-sm">
-                        <i class="fas fa-book-open card-icon mb-3"></i>
-                        <h5 class="fw-bold">Edukasi Dasar</h5>
-                        <p class="card-text text-muted">Pelajari konsep finansial dasar dengan modul yang mudah dipahami dalam genggaman.</p>
-                        <a href="#" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card p-4 h-100 border-0 shadow-sm">
-                        <i class="fas fa-calculator card-icon mb-3"></i>
-                        <h5 class="fw-bold">Kalkulator Keuangan</h5>
-                        <p class="card-text text-muted">Hitung anggaran, dana darurat, dan investasi dengan cepat dan akurat.</p>
-                        <a href="#" class="stretched-link"></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card p-4 h-100 border-0 shadow-sm">
-                        <i class="fas fa-video card-icon mb-3"></i>
-                        <h5 class="fw-bold">Video Tutorial</h5>
-                        <p class="card-text text-muted">Tonton video tutorial interaktif tentang berbagai topik finansial.</p>
-                        <a href="#" class="stretched-link"></a>
-                    </div>
+    <div class="container">
+        <h2 class="text-center mb-5">Akses Cepat</h2>
+        <div class="row text-center">
+            
+            @foreach ($quick_access as $item)
+            <div class="col-lg-4 mb-4">
+                <div class="card p-4 h-100 border-0 shadow-sm">
+                    <i class="{{ $item->icon_class }} card-icon mb-3"></i>
+                    <h5 class="fw-bold">{{ $item->title }}</h5>
+                    <p class="card-text text-muted">{{ $item->description }}</p>
+                    <a href="#" class="stretched-link"></a>
                 </div>
             </div>
+            @endforeach
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="section-padding pt-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5 ">Misi Kami</h2>
-            <div class="row text-center">
-                <div class="col-lg-4 mb-4">
-                    <i class="fas fa-graduation-cap card-icon mb-3"></i>
-                    <h5 class="fw-bold">Edukasi</h5>
-                    <p class="text-muted"><small>Memberikan literasi keuangan yang inklusif dan mudah diakses bagi semua kalangan.</small></p>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <i class="fas fa-handshake card-icon mb-3"></i>
-                    <h5 class="fw-bold">Transparansi</h5>
-                    <p class="text-muted"><small>Menyajikan informasi dengan jelas, jujur, dan tidak memihak.</small></p>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <i class="fas fa-lightbulb card-icon mb-3"></i>
-                    <h5 class="fw-bold">Inovasi</h5>
-                    <p class="text-muted"><small>Menciptakan fitur dan alat bantu finansial (financial tools) yang relevan dan mutakhir.</small></p>
-                </div>
+    <div class="container">
+        <h2 class="text-center mb-5 ">Misi Kami</h2>
+        <div class="row text-center">
+            
+            @foreach ($our_mission as $item)
+            <div class="col-lg-4 mb-4">
+                <i class="{{ $item->icon_class }} card-icon mb-3"></i>
+                <h5 class="fw-bold">{{ $item->title }}</h5>
+                <p class="text-muted"><small>{{ $item->description }}</small></p>
             </div>
+            @endforeach
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="section-padding">
         <div class="container">
